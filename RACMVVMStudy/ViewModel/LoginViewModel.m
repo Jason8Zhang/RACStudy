@@ -43,14 +43,10 @@
             @strongify(self);
             return [[self.user loginSignal] logAll];
         }];
-        
-//        [self.loginCommand.executionSignals subscribeNext:^(id  _Nullable x) {
-//            NSLog(@" 失败了啊阿啊阿啊阿啊");
-//        } error:^(NSError * _Nullable error) {
-//            NSLog(@" error -->%@",error);
-//        } completed:^{
-//            NSLog(@"completed");
+//        self.loginCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+//            return [self.user loginSignal];
 //        }];
+
     }
     
     return self;

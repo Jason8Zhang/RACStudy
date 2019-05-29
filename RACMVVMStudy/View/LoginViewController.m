@@ -111,7 +111,7 @@
     [loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [self.view addSubview:loginButton];
     self.loginB = loginButton;
-    loginButton.enabled = NO;
+//    loginButton.enabled = NO;
     
     //布局界面元素
     [passwordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
