@@ -38,7 +38,7 @@
     [self test10];
     [self test11];
     [self test12];
-
+    [self test13];
 }
 
 
@@ -277,6 +277,14 @@
         return nil;
     }];
     _signal = signal;
+}
+
+- (void)test13 {
+    RACSubject *subject = [RACSubject subject];
+    [subject sendNext:@"aaaa"];
+    [subject subscribeNext:^(id  _Nullable x) {
+        NSLog(@"test13 ----> %@",x);
+    }];
 }
 
 @end
