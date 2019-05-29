@@ -53,25 +53,14 @@
 #pragma mark - 自定义方法
 - (void)bindViewModel {
     self.userNameT.text = self.viewModel.user.userModel.username;
+    RAC(self.viewModel.user.userModel,username) = self.userNameT.rac_textSignal;
+    
     self.passWordT.text = self.viewModel.user.userModel.password;
-    RAC(self.viewModel.user.userModel, username) = self.userNameT.rac_textSignal;
-    RAC(self.viewModel.user.userModel, password) = self.passWordT.rac_textSignal;
-    
-//    [self.viewModel.user.userModel]
-    [RACObserve(self.viewModel.user.userModel, username) subscribeNext:^(id  _Nullable x) {
-        NSLog(@"x----->%@ ",x);
-    }];
-    
-    
-    @weakify(self)
-    [self.userNameT.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
-        @strongify(self)
-        NSLog(@"self.viewModel.user.userModel -----> %@",self.viewModel.user.userModel.username);
-        NSLog(@"x1----->%@",x);
-    }];
+    RAC(self.viewModel.user.userModel,password) = self.passWordT.rac_textSignal;
     
     self.loginB.rac_command = self.viewModel.loginCommand;
-//    @weakify(self)
+    
+    @weakify(self)
     [self.viewModel.loginCommand.executing subscribeNext:^(NSNumber * _Nullable x) {
         @strongify(self)
         BOOL end = [x boolValue];
@@ -82,12 +71,12 @@
             [LoadingTool hideFrom:self.view];
         }
     }];
+    
     [self.viewModel.loginCommand.executionSignals subscribeNext:^(RACSignal *signal) {
         @strongify(self)
         [signal subscribeNext:^(ResultModel *model) {
             [self.userNameT resignFirstResponder];
             [self.passWordT resignFirstResponder];
-            
             if (model.success) {
                 HomeViewController *homeCtr = [HomeViewController homeViewControllerWithViewModel:[[HomeViewModel alloc] initWithHome:[Home homeWithUser:model.dataModel]]];
                 [UIApplication sharedApplication].delegate.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:homeCtr];
@@ -97,8 +86,25 @@
             }
         }];
     }];
+
+//    [self.viewModel.loginCommand.executionSignals subscribeNext:^(RACSignal *signal) {
+//        @strongify(self)
+//        [signal subscribeNext:^(ResultModel *model) {
+//            [self.userNameT resignFirstResponder];
+//            [self.passWordT resignFirstResponder];
+//
+//            if (model.success) {
+//                HomeViewController *homeCtr = [HomeViewController homeViewControllerWithViewModel:[[HomeViewModel alloc] initWithHome:[Home homeWithUser:model.dataModel]]];
+//                [UIApplication sharedApplication].delegate.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:homeCtr];
+//                [[UIApplication sharedApplication].delegate.window makeKeyWindow];
+//            } else {
+//                [LoadingTool showMessage:model.message toView:self.view];
+//            }
+//        }];
+//    }];
 }
 - (void)settingUI {
+    self.view.backgroundColor = [UIColor whiteColor];
     //创建界面元素
     UITextField *userNameTextField = [[UITextField alloc] init];
     userNameTextField.borderStyle = UITextBorderStyleRoundedRect;

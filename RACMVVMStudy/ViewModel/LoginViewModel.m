@@ -12,9 +12,8 @@
 @implementation LoginViewModel
 
 - (instancetype)init {
-    if (self = [super init]) {
-        _user = [[User alloc] init];
-    }
+    _user = [[User alloc] init];
+    self = [self initWithUser:_user];
     return self;
 }
 + (instancetype)loginViewModelWithUser:(User *)user {
@@ -43,6 +42,10 @@
         self.loginCommand = [[RACCommand alloc] initWithEnabled:validLS signalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             @strongify(self);
             return [[self.user loginSignal] logAll];
+        }];
+        
+        [self.loginCommand.executionSignals subscribeNext:^(id  _Nullable x) {
+            NSLog(@" 失败了啊阿啊阿啊阿啊");
         }];
     }
     

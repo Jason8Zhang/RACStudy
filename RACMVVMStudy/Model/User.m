@@ -23,7 +23,7 @@
 }
 - (instancetype)init {
     if (self = [super init]) {
-        
+        self.services = [Services new];
         self.userModel = [[UserModel alloc] init];
     }
     
@@ -37,10 +37,17 @@
     return [self isValid:self.userModel.password];
 }
 - (RACSignal *)loginSignal {
-    return [[self.services loginSignal:self.userModel.username passWord:self.userModel.password] map:^id _Nullable(Result *result) {
+    return [[self.services loginSignal:self.userModel.username
+                              passWord:self.userModel.password] map:^id _Nullable(Result *result) {
         self.userModel.logined = result.success && [result.responseObject[@"code"] integerValue] == 0;
         //转换为模型数据
-        return [ResultModel resultWithSuccess:result.success ? [result.responseObject[@"code"] integerValue] == 0 : result.success message:result.success ? result.responseObject[@"message"] : result.message dataModel:[User userWithServices:self.services userModel:[UserModel userModelWithUsername:result.responseObject[@"userName"] password:result.responseObject[@"passWord"] logined:result.success && [result.responseObject[@"code"] integerValue] == 0]]];
+//        if ([ResultModel resultWithSuccess:result.success]) {
+//            [result.responseObject[@"code"] integerValue] == 0
+//        }
+        
+        return [ResultModel resultWithSuccess:result.success ? [result.responseObject[@"code"] integerValue] == 0 : result.success
+                                      message:result.success ? result.responseObject[@"message"] : result.message
+                                    dataModel:[User userWithServices:self.services userModel:[UserModel userModelWithUsername:result.responseObject[@"userName"] password:result.responseObject[@"passWord"] logined:result.success && [result.responseObject[@"code"] integerValue] == 0]]];
     }];
 }
 - (RACSignal *)logoutSignal {
@@ -48,7 +55,9 @@
         Result *result = (Result *)value;
         self.userModel.logined = !(result.success && [result.responseObject[@"code"] integerValue] == 0);
         //转换为模型数据
-        return [ResultModel resultWithSuccess:result.success ? [result.responseObject[@"code"] integerValue] == 0 : result.success message:result.success ? result.responseObject[@"message"] : result.message dataModel:[User userWithServices:self.services userModel:[UserModel userModelWithUsername:result.responseObject[@"userName"] password:result.responseObject[@"passWord"] logined:!(result.success && [result.responseObject[@"code"] integerValue] == 0)]]];
+        return [ResultModel resultWithSuccess:result.success ? [result.responseObject[@"code"] integerValue] == 0 : result.success
+                                      message:result.success ? result.responseObject[@"message"] : result.message
+                                    dataModel:[User userWithServices:self.services userModel:[UserModel userModelWithUsername:result.responseObject[@"userName"] password:result.responseObject[@"passWord"] logined:!(result.success && [result.responseObject[@"code"] integerValue] == 0)]]];
     }];
 }
 - (BOOL)isValid:(NSString *)str {

@@ -11,7 +11,7 @@
 #import "UserModel.h"
 
 @interface User : NSObject
-@property (strong, nonatomic, readonly) Services *services;
+@property (strong, nonatomic) Services *services;
 @property (strong, nonatomic) UserModel *userModel;
 @property (assign, nonatomic, readonly, getter=isValidOfUsername) BOOL validOfUsername;
 @property (assign, nonatomic, readonly, getter=isValidOfPassword) BOOL validOfPassword;

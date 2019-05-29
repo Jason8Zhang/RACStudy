@@ -26,7 +26,8 @@ static FMDatabaseQueue * _databaseQueue;
             FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT COUNT(*) FROM %@;",K_User_TableName]];
             [set next];
             if ([set intForColumnIndex:0] == 0) {
-                if (![db executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@ (name, password) VALUES (?, ?);"],@"Jiuchabaikaishui", @"123456"]) {
+                NSString *sqlString = [NSString stringWithFormat:@"INSERT INTO %@ (name, password) VALUES (?, ?);",K_User_TableName];
+                if (![db executeUpdate:sqlString,@"Jiuchabaikaishui", @"123456"]) {
                     NSLog(@"用户添加失败");
                 }
             }
@@ -39,7 +40,8 @@ static FMDatabaseQueue * _databaseQueue;
                 NSError *error = nil;
                 NSArray *arr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
                 for (NSDictionary *dic in arr) {
-                    if (![db executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@ (uin, name, score, img) VALUES (?, ?, ?, ?)", K_Friend_TableName]],dic[@"uin"], dic[@"name"], dic[@"score"], dic[@"img"]) {
+                    NSString *sqlString = [NSString stringWithFormat:@"INSERT INTO %@ (uin, name, score, img) VALUES (?, ?, ?, ?)", K_Friend_TableName];
+                    if (![db executeUpdate:sqlString,dic[@"uin"], dic[@"name"], dic[@"score"], dic[@"img"]]) {
                         NSLog(@"好友数据插入失败: %@", dic);
                     }
                 }
@@ -60,7 +62,7 @@ static FMDatabaseQueue * _databaseQueue;
         dispatch_async(dispatch_get_main_queue(), ^{
             [_databaseQueue inDatabase:^(FMDatabase * _Nonnull db) {
                 if ([path isEqualToString:K_Service_Login]) {
-                    FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE name = ?;",K_User_TableName],parameters[@"userName"]];
+                    FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE name = ?",K_User_TableName],parameters[@"userName"]];
                     if ([set next]) {
                         NSString *name = [set stringForColumn:@"name"];
                         NSString *password = [set stringForColumn:@"password"];
@@ -78,6 +80,8 @@ static FMDatabaseQueue * _databaseQueue;
                             }
                             
                         }
+                    } else {
+                        completion(NO, @"请求失败", nil);
                     }
                 } else if ([path isEqualToString:K_Service_Logout]) {
                     FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE name = ?;", K_User_TableName], parameters[@"userName"]];
