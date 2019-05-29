@@ -25,12 +25,13 @@ static FMDatabaseQueue * _databaseQueue;
              NSLog(@"User表创建成功");
             FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT COUNT(*) FROM %@;",K_User_TableName]];
             [set next];
-            if ([set intForColumnIndex:0] == 0) {
+//            if ([set intForColumnIndex:0] == 0) {
                 NSString *sqlString = [NSString stringWithFormat:@"INSERT INTO %@ (name, password) VALUES (?, ?);",K_User_TableName];
-                if (![db executeUpdate:sqlString,@"Jiuchabaikaishui", @"123456"]) {
+                if (![db executeUpdate:sqlString,@"test01", @"123456"]) {
                     NSLog(@"用户添加失败");
-                }
+//                }
             }
+            [set close];
         }
         if ([db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (identifier integer primary key autoincrement, uin integer not null unique, name text not null, score integer, img text);",K_Friend_TableName]]) {
              NSLog(@"Friend表创建成功");
@@ -47,6 +48,7 @@ static FMDatabaseQueue * _databaseQueue;
                 }
 
             }
+            [set close];
 //            if ([db executeUpdate:[NSString stringWithFormat:@"SELECT COUNT(*) FROM %@;",K_User_TableName]]) {
 //
 //            }
@@ -62,11 +64,11 @@ static FMDatabaseQueue * _databaseQueue;
         dispatch_async(dispatch_get_main_queue(), ^{
             [_databaseQueue inDatabase:^(FMDatabase * _Nonnull db) {
                 if ([path isEqualToString:K_Service_Login]) {
-                    FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE name = ?",K_User_TableName],parameters[@"userName"]];
+                    FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE name = ?",K_User_TableName],@"test01"];
                     if ([set next]) {
                         NSString *name = [set stringForColumn:@"name"];
                         NSString *password = [set stringForColumn:@"password"];
-                        if ([parameters[@"userName"] isEqualToString:@"Jiuchabaikaishu"]) {//用账号Jiuchabaikaishu模拟网络请求失败
+                        if (![parameters[@"userName"] isEqualToString:@"test01"]) {//用账号Jiuchabaikaishu模拟网络请求失败
                             completion(NO, @"请求失败", nil);
                         } else {
                             if ([name isEqualToString:parameters[@"userName"]]) {
@@ -83,6 +85,7 @@ static FMDatabaseQueue * _databaseQueue;
                     } else {
                         completion(NO, @"请求失败", nil);
                     }
+                    [set close];
                 } else if ([path isEqualToString:K_Service_Logout]) {
                     FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE name = ?;", K_User_TableName], parameters[@"userName"]];
                     if ([set next]) {
@@ -108,7 +111,7 @@ static FMDatabaseQueue * _databaseQueue;
                     while ([set next]) {
                         [mArr addObject:@{@"uin": @([set intForColumn:@"uin"]), @"name": [set stringForColumn:@"name"], @"img": [set stringForColumn:@"img"]}];
                     }
-                    
+                     [set close];
                     completion(YES, @"请求成功", mArr);
                 } else if ([path isEqualToString:K_Service_PageFriends]){
                     FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE name LIKE ? OR uin LIKE ? LIMIT %zi, %zi;", K_Friend_TableName, [parameters[@"page"] integerValue]*[parameters[@"count"] integerValue], [parameters[@"count"] integerValue]], [NSString stringWithFormat:@"%%%@%%", parameters[@"searchContent"]], [NSString stringWithFormat:@"%%%@%%", parameters[@"searchContent"]]];
@@ -116,7 +119,7 @@ static FMDatabaseQueue * _databaseQueue;
                     while ([set next]) {
                         [mArr addObject:@{@"uin": @([set intForColumn:@"uin"]), @"name": [set stringForColumn:@"name"], @"img": [set stringForColumn:@"img"]}];
                     }
-                    
+                     [set close];
                     completion(YES, @"请求成功", mArr);
                 } else if ([path isEqualToString:K_Service_GetAllFriends]) {
                     NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"]];

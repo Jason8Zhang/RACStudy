@@ -44,9 +44,13 @@
             return [[self.user loginSignal] logAll];
         }];
         
-        [self.loginCommand.executionSignals subscribeNext:^(id  _Nullable x) {
-            NSLog(@" 失败了啊阿啊阿啊阿啊");
-        }];
+//        [self.loginCommand.executionSignals subscribeNext:^(id  _Nullable x) {
+//            NSLog(@" 失败了啊阿啊阿啊阿啊");
+//        } error:^(NSError * _Nullable error) {
+//            NSLog(@" error -->%@",error);
+//        } completed:^{
+//            NSLog(@"completed");
+//        }];
     }
     
     return self;

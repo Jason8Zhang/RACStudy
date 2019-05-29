@@ -75,6 +75,7 @@
     [self.viewModel.loginCommand.executionSignals subscribeNext:^(RACSignal *signal) {
         @strongify(self)
         [signal subscribeNext:^(ResultModel *model) {
+            [LoadingTool hideFrom:self.view];
             [self.userNameT resignFirstResponder];
             [self.passWordT resignFirstResponder];
             if (model.success) {
@@ -86,22 +87,6 @@
             }
         }];
     }];
-
-//    [self.viewModel.loginCommand.executionSignals subscribeNext:^(RACSignal *signal) {
-//        @strongify(self)
-//        [signal subscribeNext:^(ResultModel *model) {
-//            [self.userNameT resignFirstResponder];
-//            [self.passWordT resignFirstResponder];
-//
-//            if (model.success) {
-//                HomeViewController *homeCtr = [HomeViewController homeViewControllerWithViewModel:[[HomeViewModel alloc] initWithHome:[Home homeWithUser:model.dataModel]]];
-//                [UIApplication sharedApplication].delegate.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:homeCtr];
-//                [[UIApplication sharedApplication].delegate.window makeKeyWindow];
-//            } else {
-//                [LoadingTool showMessage:model.message toView:self.view];
-//            }
-//        }];
-//    }];
 }
 - (void)settingUI {
     self.view.backgroundColor = [UIColor whiteColor];

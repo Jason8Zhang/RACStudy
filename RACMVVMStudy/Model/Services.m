@@ -37,8 +37,8 @@
             [subscriber sendNext:[Result resultWithSuccess:success message:message responseObject:responseObject]];
             [subscriber sendCompleted];
         }];
-        NSError *error = [[NSError alloc] initWithDomain:@"" code:10001 userInfo:@{}];
-        [subscriber sendError:error];
+//        NSError *error = [[NSError alloc] initWithDomain:@"" code:10001 userInfo:@{}];
+//        [subscriber sendError:error];
         return [RACDisposable disposableWithBlock:^{
             
         }];

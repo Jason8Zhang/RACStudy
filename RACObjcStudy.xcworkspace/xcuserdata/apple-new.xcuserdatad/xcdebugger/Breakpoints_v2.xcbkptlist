@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/View/LoginViewController.m"
-            timestampString = "580811983.7944109"
+            timestampString = "580821750.0788389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/View/LoginViewController.m"
-            timestampString = "580811983.794681"
+            timestampString = "580821750.080282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -89,7 +89,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/ViewModel/LoginViewModel.m"
-            timestampString = "580811983.794733"
+            timestampString = "580821750.080717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -105,7 +105,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/ViewModel/LoginViewModel.m"
-            timestampString = "580811983.795406"
+            timestampString = "580821750.081254"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -121,7 +121,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/ViewModel/LoginViewModel.m"
-            timestampString = "580811983.795734"
+            timestampString = "580821750.081388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -137,7 +137,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/ViewModel/LoginViewModel.m"
-            timestampString = "580811983.796077"
+            timestampString = "580821750.08157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -185,7 +185,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/ViewModel/LoginViewModel.m"
-            timestampString = "580811983.796363"
+            timestampString = "580821750.081688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -201,7 +201,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/ViewModel/LoginViewModel.m"
-            timestampString = "580811983.7966599"
+            timestampString = "580821750.081871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -217,7 +217,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/Model/User.m"
-            timestampString = "580811983.796965"
+            timestampString = "580821750.082121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
@@ -280,11 +280,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/Model/User.m"
-            timestampString = "580811983.797298"
+            timestampString = "580821750.082507"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "-loginSignal"
             landmarkType = "7">
          </BreakpointContent>
@@ -306,11 +306,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/Model/User.m"
-            timestampString = "580811983.797367"
+            timestampString = "580821750.082629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "-loginSignal"
             landmarkType = "7">
          </BreakpointContent>
@@ -318,11 +318,122 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
-            timestampString = "580811983.797449"
+            timestampString = "580821750.082768"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "+postWithPath:parameters:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
+            timestampString = "580821750.083161"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "+postWithPath:parameters:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
+            timestampString = "580821750.0832911"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "+postWithPath:parameters:completion:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__53+[NetworkingTool postWithPath:parameters:completion:]_block_invoke_2"
+                  moduleName = "RACMVVMStudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple-new/workspace/DevStudy/RACObjcStudy/RACMVVMStudy/Tool/NetworkingTool.m"
+                  timestampString = "580817424.7055531"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__53+[NetworkingTool postWithPath:parameters:completion:]_block_invoke_3"
+                  moduleName = "RACMVVMStudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple-new/workspace/DevStudy/RACObjcStudy/RACMVVMStudy/Tool/NetworkingTool.m"
+                  timestampString = "580817424.7071069"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "39">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "RACMVVMStudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple-new/workspace/DevStudy/RACObjcStudy/RACMVVMStudy/Tool/NetworkingTool.m"
+                  timestampString = "580817424.708577"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
+            timestampString = "580821750.083407"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "+postWithPath:parameters:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
+            timestampString = "580821750.083549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
@@ -337,13 +448,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+            filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
+            timestampString = "580821750.083665"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "+postWithPath:parameters:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RACMVVMStudy/View/LoginViewController.m"
+            timestampString = "580821750.083789"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-bindViewModel"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
+            timestampString = "580821750.0841269"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "+postWithPath:parameters:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
             filePath = "RACMVVMStudy/Model/Services.m"
-            timestampString = "580811983.797696"
+            timestampString = "580821750.084217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-loginSignal:passWord:"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-logoutSignal:passWord:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -353,13 +512,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
-            timestampString = "580811983.797947"
+            filePath = "RACMVVMStudy/Model/Services.m"
+            timestampString = "580821750.084295"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "+postWithPath:parameters:completion:"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "+resultWithSuccess:message:responseObject:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RACMVVMStudy/Model/Services.m"
+            timestampString = "580821750.084541"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "-initWithSuccess:message:responseObject:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RACMVVMStudy/Model/Services.m"
+            timestampString = "580821750.084638"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "-initWithSuccess:message:responseObject:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RACMVVMStudy/Model/Services.m"
+            timestampString = "580821750.084726"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "-initWithSuccess:message:responseObject:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -369,124 +576,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
-            timestampString = "580811983.797995"
+            filePath = "RACMVVMStudy/Tool/LoadingTool.m"
+            timestampString = "580821750.084821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "+postWithPath:parameters:completion:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__53+[NetworkingTool postWithPath:parameters:completion:]_block_invoke_2"
-                  moduleName = "RACMVVMStudy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple-new/workspace/DevStudy/RACObjcStudy/RACMVVMStudy/Tool/NetworkingTool.m"
-                  timestampString = "580811818.295851"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__53+[NetworkingTool postWithPath:parameters:completion:]_block_invoke_3"
-                  moduleName = "RACMVVMStudy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple-new/workspace/DevStudy/RACObjcStudy/RACMVVMStudy/Tool/NetworkingTool.m"
-                  timestampString = "580811818.297273"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "39">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_"
-                  moduleName = "RACMVVMStudy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple-new/workspace/DevStudy/RACObjcStudy/RACMVVMStudy/Tool/NetworkingTool.m"
-                  timestampString = "580811818.298695"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
-            timestampString = "580811983.798038"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "+postWithPath:parameters:completion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
-            timestampString = "580811983.798094"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "+postWithPath:parameters:completion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
-            timestampString = "580811983.798135"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "+postWithPath:parameters:completion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RACMVVMStudy/Tool/NetworkingTool.m"
-            timestampString = "580811983.798189"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "+postWithPath:parameters:completion:"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "+showMessage:toView:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
