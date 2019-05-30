@@ -13,6 +13,7 @@
 #import "MJRefresh.h"
 #import "ResultsViewController.h"
 #import "ResultModel.h"
+#import "TableViewBindingHelper.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, UISearchBarDelegate>
 
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) UIButton *leftButton;
 @property (weak, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UISearchController *searchCtr;
+@property(strong,nonatomic) TableViewBindingHelper *tableviewBindingHelper;
 
 @end
 
@@ -87,6 +89,13 @@
         [self loadTableView:NO];
     }];
     self.tableView.mj_footer.automaticallyChangeAlpha = YES;
+    
+    self.tableviewBindingHelper = [TableViewBindingHelper bindingHelperForTableView:self.tableView
+                                                                       sourceSignal:[RACObserve(self.viewModel, dataArr) takeUntil:self.rac_willDeallocSignal]
+                                                                   selectionCommand:[[RACCommand alloc]initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        NSLog(@"----> %@",input);
+        return [RACSignal empty];
+    }]];
 }
 /**
  加载tableView
@@ -138,23 +147,23 @@
     self.tableView.tableHeaderView = view;
 }
 
-#pragma mark - <UITableViewDelegate, UITableViewDataSource>代理方法
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.viewModel.dataArr count];
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [FriendTableViewCell friendCell:tableView viewModel:[self.viewModel.dataArr objectAtIndex:indexPath.row]];
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [[self.viewModel didSelectedAtIndex:indexPath.row] subscribeNext:^(FriendModel *model) {
-        NSLog(@"selected -----> %@",model);
-    }];
-}
-
-#pragma mark - <UISearchResultsUpdating>代理方法
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-    self.viewModel.resultsViewModel.searchContent = searchController.searchBar.text;
-}
+//#pragma mark - <UITableViewDelegate, UITableViewDataSource>代理方法
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return [self.viewModel.dataArr count];
+//}
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return [FriendTableViewCell friendCell:tableView viewModel:[self.viewModel.dataArr objectAtIndex:indexPath.row]];
+//}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    [[self.viewModel didSelectedAtIndex:indexPath.row] subscribeNext:^(FriendModel *model) {
+//        NSLog(@"selected -----> %@",model);
+//    }];
+//}
+//
+//#pragma mark - <UISearchResultsUpdating>代理方法
+//- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+//    self.viewModel.resultsViewModel.searchContent = searchController.searchBar.text;
+//}
 
 @end
