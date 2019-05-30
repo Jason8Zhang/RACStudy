@@ -25,20 +25,82 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor grayColor];
     // Do any additional setup after loading the view, typically from a nib.
-    [self test];
-    [self test1];
-    [self test2];
-    [self test4];
-    [self.view bringSubviewToFront:self.textfield];
-    [self test5];
-    [self test6];
-    [self test7];
-    [self test8];
-    [self test9];
-    [self test10];
-    [self test11];
-    [self test12];
-    [self test13];
+//    [self test];
+//    [self test1];
+//    [self test2];
+//    [self test4];
+//    [self.view bringSubviewToFront:self.textfield];
+//    [self test5];
+//    [self test6];
+//    [self test7];
+//    [self test8];
+//    [self test9];
+//    [self test10];
+//    [self test11];
+//    [self test12];
+//    [self test13];
+    
+    RACCommand *aCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+            NSLog(@"----> %@",input);
+            [subscriber sendNext:@"收到消息了，处理完回调一波"];
+            // 如果没有调用sendCompleted或者sendError，excuting不会收到执行结束的信号
+            [subscriber sendCompleted];
+//            NSError *err = [[NSError alloc] initWithDomain:@"com.test" code:1001 userInfo:@{}];
+//            [subscriber sendError:err];
+            return nil;
+        }];
+    }];
+    
+    [[aCommand.executionSignals switchToLatest]subscribeNext:^(id  _Nullable x) {
+        NSLog(@"----> %@",x);
+        
+    }];
+    
+//    [aCommand.executionSignals subscribeNext:^(id  _Nullable x) {
+//        NSLog(@"----> %@",x);
+//        [x subscribeNext:^(id  _Nullable y) {
+//            NSLog(@"-----> %@",y);
+//        }];
+//    }];
+//    [[aCommand execute:@"发出一个消息"] subscribeNext:^(id  _Nullable x) {
+//        NSLog(@"----> %@",x);
+//    }];
+    
+    // x是NO有两种情况，信号还没有执行或者信号已经执行完成，若果skip 1，则会跳过第一次调用，此后当x为NO的时候，肯定已经是信号执行结束了
+    [[aCommand.executing skip:1] subscribeNext:^(NSNumber * _Nullable x) {
+        if ([x boolValue]) {
+            NSLog(@"还在执行");
+        }else{
+            
+            NSLog(@"执行结束了");
+        }
+    }];
+    [aCommand execute:@"发出一个消息"];
+    
+    
+    RACSubject *signalofsignal = [RACSubject subject];
+    RACSubject *signal1 = [RACSubject subject];
+    RACSubject *signal2 = [RACSubject subject];
+    RACSubject *signal3 = [RACSubject subject];
+    RACSubject *signal4 = [RACSubject subject];
+//    [signalofsignal subscribeNext:^(id  _Nullable x) {
+//        [x subscribeNext:^(id  _Nullable x) {
+//            NSLog(@"%@",x);
+//        }];
+//    }];
+    [[signalofsignal switchToLatest] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    [signalofsignal sendNext:signal1];
+    [signalofsignal sendNext:signal2];
+    [signalofsignal sendNext:signal3];
+    [signalofsignal sendNext:signal4];
+    [signal1 sendNext:@"1"];
+    [signal2 sendNext:@"2"];
+    [signal3 sendNext:@"3"];
+    [signal4 sendNext:@"4"];
 }
 
 
