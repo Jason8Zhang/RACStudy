@@ -23,7 +23,9 @@
 @property (copy, nonatomic) NSArray<FriendCellViewModel *> *dataArr;
 @property (copy, nonatomic) NSArray<FriendCellViewModel *> *searchDataArr;
 @property (strong, nonatomic, readonly) ResultsViewModel *resultsViewModel;
+@property (strong,nonatomic,readonly) RACCommand *selectedCommand;
 
 - (instancetype)initWithHome:(Home *)home;
 - (RACSignal *)pageSignal:(BOOL)isFirst;
+- (RACSignal *)didSelectedAtIndex:(NSInteger)index;
 @end

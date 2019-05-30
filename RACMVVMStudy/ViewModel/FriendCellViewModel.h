@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "FriendModel.h"
+#import <ReactiveObjC.h>
 @interface FriendCellViewModel : NSObject
 @property (strong, nonatomic) FriendModel *friendModel;
 
 + (instancetype)friendCellViewModel:(FriendModel *)model;
 - (instancetype)initWithFriendModel:(FriendModel *)model;
+- (RACSignal*)selectedSignal;
 @end

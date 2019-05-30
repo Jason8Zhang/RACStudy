@@ -46,4 +46,17 @@
     }];
 }
 
+- (RACSignal *)searchSignalWithContent:(NSString *)contentString {
+    return [[[self.results searchSignalWithContent:contentString page:0 andCount:20] filter:^BOOL(id  _Nullable value) {
+        return contentString.length > 0;
+    }] map:^id _Nullable(ResultModel *model) {
+        return [ResultModel resultWithSuccess:model.success message:model.message dataModel:model.dataModel];
+    }] ;
+}
+
+- (RACSignal *)didSelectedSignalWithIndex:(NSInteger )index {
+    FriendCellViewModel *selectedModel = self.dataArr[index];
+    return [selectedModel selectedSignal];
+}
+
 @end

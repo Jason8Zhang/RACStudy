@@ -17,4 +17,5 @@
 
 - (RACSignal *)friendSignalWithPage:(NSInteger)page andCount:(NSInteger)count;
 - (RACSignal *)searchSignalWithContent:(NSString *)content page:(NSInteger)page andCount:(NSInteger)count;
+
 @end

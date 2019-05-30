@@ -25,11 +25,11 @@ static FMDatabaseQueue * _databaseQueue;
              NSLog(@"User表创建成功");
             FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT COUNT(*) FROM %@;",K_User_TableName]];
             [set next];
-//            if ([set intForColumnIndex:0] == 0) {
+            if ([set intForColumnIndex:0] == 0) {
                 NSString *sqlString = [NSString stringWithFormat:@"INSERT INTO %@ (name, password) VALUES (?, ?);",K_User_TableName];
-                if (![db executeUpdate:sqlString,@"test01", @"123456"]) {
+                if (![db executeUpdate:sqlString,@"Test01", @"123456"]) {
                     NSLog(@"用户添加失败");
-//                }
+                }
             }
             [set close];
         }
@@ -64,11 +64,11 @@ static FMDatabaseQueue * _databaseQueue;
         dispatch_async(dispatch_get_main_queue(), ^{
             [_databaseQueue inDatabase:^(FMDatabase * _Nonnull db) {
                 if ([path isEqualToString:K_Service_Login]) {
-                    FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE name = ?",K_User_TableName],@"test01"];
+                    FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE name = ?",K_User_TableName],@"Test01"];
                     if ([set next]) {
                         NSString *name = [set stringForColumn:@"name"];
                         NSString *password = [set stringForColumn:@"password"];
-                        if (![parameters[@"userName"] isEqualToString:@"test01"]) {//用账号Jiuchabaikaishu模拟网络请求失败
+                        if (![parameters[@"userName"] isEqualToString:@"Test01"]) {//用账号Jiuchabaikaishu模拟网络请求失败
                             completion(NO, @"请求失败", nil);
                         } else {
                             if ([name isEqualToString:parameters[@"userName"]]) {
@@ -106,7 +106,7 @@ static FMDatabaseQueue * _databaseQueue;
                         }
                     }
                 } else if ([path isEqualToString:K_Service_SearchFriends]){
-                    FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %zi, %zi;", K_Friend_TableName, [parameters[@"page"] integerValue]*[parameters[@"count"] integerValue], [parameters[@"count"] integerValue]]];
+                    FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE name LIKE ? OR uin LIKE ? LIMIT %zi, %zi;", K_Friend_TableName, [parameters[@"page"] integerValue]*[parameters[@"count"] integerValue], [parameters[@"count"] integerValue]], [NSString stringWithFormat:@"%%%@%%", parameters[@"searchContent"]], [NSString stringWithFormat:@"%%%@%%", parameters[@"searchContent"]]];
                     NSMutableArray *mArr = [NSMutableArray arrayWithCapacity:1];
                     while ([set next]) {
                         [mArr addObject:@{@"uin": @([set intForColumn:@"uin"]), @"name": [set stringForColumn:@"name"], @"img": [set stringForColumn:@"img"]}];
@@ -114,7 +114,8 @@ static FMDatabaseQueue * _databaseQueue;
                      [set close];
                     completion(YES, @"请求成功", mArr);
                 } else if ([path isEqualToString:K_Service_PageFriends]){
-                    FMResultSet *set = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE name LIKE ? OR uin LIKE ? LIMIT %zi, %zi;", K_Friend_TableName, [parameters[@"page"] integerValue]*[parameters[@"count"] integerValue], [parameters[@"count"] integerValue]], [NSString stringWithFormat:@"%%%@%%", parameters[@"searchContent"]], [NSString stringWithFormat:@"%%%@%%", parameters[@"searchContent"]]];
+                    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %zi, %zi;", K_Friend_TableName, [parameters[@"page"] integerValue]*[parameters[@"count"] integerValue], [parameters[@"count"] integerValue]];
+                    FMResultSet *set = [db executeQuery:sqlString];
                     NSMutableArray *mArr = [NSMutableArray arrayWithCapacity:1];
                     while ([set next]) {
                         [mArr addObject:@{@"uin": @([set intForColumn:@"uin"]), @"name": [set stringForColumn:@"name"], @"img": [set stringForColumn:@"img"]}];

@@ -69,6 +69,11 @@
     [self bindViewModel];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self loadTableView:YES];
+}
+
 #pragma mark - 自定义方法
 - (void)bindViewModel {
     @weakify(self)
@@ -78,12 +83,16 @@
         @strongify(self)
         [self.tableView reloadData];
     }];
-    [RACObserve(self.viewModel, searchContent) subscribeNext:^(NSString *x) {
+    // 这段代码的意思是若0.3秒内无新信号(tf无输入),并且输入框内不为空那么将会执行,这对服务器的压力减少有巨大帮助同时提高了用户体验
+    [[[[RACObserve(self.viewModel, searchContent) throttle:0.3] distinctUntilChanged] ignore:@""] subscribeNext:^(NSString *x) {
         if (x == nil || x.length == 0) {
             [self.tableView removeFromSuperview];
             self.tableView = nil;
+        }else {
+            [self loadTableView:YES];
         }
     }];
+    
 }
 - (void)settingUi {
     self.view.backgroundColor = [UIColor clearColor];
@@ -121,6 +130,9 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [[self.viewModel didSelectedSignalWithIndex:indexPath.row] subscribeNext:^(FriendModel * model) {
+        NSLog(@"---->您点击的是%@",model);
+    }];
 }
 
 #pragma mark - <UISearchBarDelegate>代理方法

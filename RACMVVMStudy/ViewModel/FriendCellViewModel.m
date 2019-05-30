@@ -8,6 +8,7 @@
 
 #import "FriendCellViewModel.h"
 
+
 @implementation FriendCellViewModel
 - (instancetype)initWithFriendModel:(FriendModel *)model {
     if (self = [super init]) {
@@ -18,5 +19,14 @@
 }
 + (instancetype)friendCellViewModel:(FriendModel *)model {
     return [[self alloc] initWithFriendModel:model];
+}
+- (RACSignal*)selectedSignal {
+    @weakify(self)
+    return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        @strongify(self)
+        [subscriber sendNext:self->_friendModel];
+        [subscriber sendCompleted];
+        return nil;
+    }];
 }
 @end

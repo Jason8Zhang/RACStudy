@@ -147,6 +147,9 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [[self.viewModel didSelectedAtIndex:indexPath.row] subscribeNext:^(FriendModel *model) {
+        NSLog(@"selected -----> %@",model);
+    }];
 }
 
 #pragma mark - <UISearchResultsUpdating>代理方法

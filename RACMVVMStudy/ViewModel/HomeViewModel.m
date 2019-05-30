@@ -22,6 +22,10 @@
         _logoutCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(ResultModel *model) {
             return [[self.home.user logoutSignal] logAll];
         }];
+        
+//        _selectedCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+//
+//        }];
     }
     
     return self;
@@ -51,5 +55,10 @@
             _page++;
         }
     }];
+}
+
+- (RACSignal *)didSelectedAtIndex:(NSInteger)index {
+    FriendCellViewModel *selectedVM = self.dataArr[index];
+    return [selectedVM selectedSignal];
 }
 @end

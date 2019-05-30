@@ -21,6 +21,7 @@
 + (instancetype)resultsViewModelWithResults:(Results *)results;
 - (instancetype)initWithResults:(Results *)results;
 - (RACSignal *)searchSignal:(BOOL)isFirst;
-
+- (RACSignal *)searchSignalWithContent:(NSString *)contentString;
+- (RACSignal *)didSelectedSignalWithIndex:(NSInteger )index;
 @end
 

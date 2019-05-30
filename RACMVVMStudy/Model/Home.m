@@ -8,7 +8,8 @@
 
 #import "Home.h"
 #import "FriendModel.h"
-
+#import "ResultModel.h"
+#import "LinqToObjectiveC.h"
 @implementation Home
 + (instancetype)homeWithUser:(User *)user {
     return [[self alloc] initWithUser:user];
@@ -20,14 +21,20 @@
     
     return self;
 }
-//
-//- (RACSignal *)friendSignalWithPage:(NSInteger)page andCount:(NSInteger)count {
-//    return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
-//        
-//        return nil
-//    }];
-//}
-//- (RACSignal *)searchSignalWithContent:(NSString *)content page:(NSInteger)page andCount:(NSInteger)count {
-//
-//}
+- (RACSignal *)friendSignalWithPage:(NSInteger)page andCount:(NSInteger)count {
+    return [[self.user.services friendSignalWithPage:page andCount:count] map:^id _Nullable(Result *result) {
+        //转换为模型数据
+        return [ResultModel resultWithSuccess:result.success message:result.message dataModel:[result.responseObject linq_select:^id(id item) {
+            return [FriendModel friendModelWithInfo:item];
+        }]];
+    }];
+}
+- (RACSignal *)searchSignalWithContent:(NSString *)content page:(NSInteger)page andCount:(NSInteger)count {
+    return [[self.user.services searchSignalWithContent:content page:page andCount:count] map:^id _Nullable(Result *result) {
+        //转换为模型数据
+        return [ResultModel resultWithSuccess:result.success message:result.message dataModel:[result.responseObject linq_select:^id(id item) {
+            return [FriendModel friendModelWithInfo:item];
+        }]];
+    }];
+}
 @end
